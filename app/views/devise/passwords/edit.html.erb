@@ -1,0 +1,24 @@
+<div style="width: 36rem; margin:0 auto;">
+  <h2>Change your password?</h2>
+</div>
+
+<div class="card" style="width: 36rem; margin:0 auto;">
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    
+      <div class="field form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"example@gmail.com" %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Send me reset password instructions", class:"btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div style="width: 36rem; margin:0 auto;">
+  <%= render "devise/shared/links" %>
+</div>

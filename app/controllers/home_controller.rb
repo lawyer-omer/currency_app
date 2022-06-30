@@ -7,7 +7,7 @@ class HomeController < ApplicationController
         currency_to = "usd"
         currency_from = "eur"
     
-        @url = "https://api.apilayer.com/fixer/convert?to=#{currency_to}&from=#{currency_from}&amount=100&apikey=JFkntXPV2tLSXgKBFUdYra5ZHtLlzKF3"
+        @url = "https://api.apilayer.com/fixer/convert?to=#{currency_to}&from=#{currency_from}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
         @uri = URI(@url)
     
         @response = Net::HTTP.get(@uri)
@@ -44,7 +44,7 @@ class HomeController < ApplicationController
             require 'net/http'
             require 'json'
             
-            @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=JFkntXPV2tLSXgKBFUdYra5ZHtLlzKF3"
+            @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
             @uri = URI(@url)
             
             @response = Net::HTTP.get(@uri)
