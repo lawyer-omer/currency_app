@@ -15,3 +15,5 @@ $ bundle _2.3.14_ lock --add-platform x86_64-linux
 
 Run the rails server:
 ``` $ rails s ```
+
+Thanks
