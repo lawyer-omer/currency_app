@@ -13,6 +13,9 @@ $ bundle _2.3.14_ install
 $ bundle _2.3.14_ lock --add-platform x86_64-linux
 ```
 
+Prepare database:
+``` $ rails db:migrate ```
+
 Run the rails server:
 ``` $ rails s ```
 

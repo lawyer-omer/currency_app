@@ -1,5 +1,8 @@
 class RatesController < ApplicationController
   before_action :set_rate, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :correct_user, only: %i[ show edit update destroy ]
+
 
   # GET /rates or /rates.json
   def index
@@ -66,5 +69,9 @@ class RatesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def rate_params
       params.require(:rate).permit(:from_symbol, :to_symbol, :rate_symbol, :user_id)
+    end
+    def correct_user
+      @correct = current_user.rates.find_by(id: params[:id])
+      redirect_to rates_path, notice: "You are not authorized" if @correct.nil?
     end
 end

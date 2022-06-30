@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Rates</h1>
-
 <div id="rates">
-  <% @rates.each do |rate| %>
-    <%= render rate %>
-    <p>
-      <%= link_to "Show this rate", rate %>
-    </p>
-  <% end %>
+    <% @rates.each do |rate| %>
+      <% if rate.user_id == current_user.id%>
+      <%= render rate %>
+      <p>
+        <%= link_to "Show this rate", rate %>
+      </p>
+      <% else %>
+      <%= "You need to add some pairs" %>
+      <% end %>
+    <% end %>
 </div>
+
 
 <%= link_to "New rate", new_rate_path %>
