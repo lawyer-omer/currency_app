@@ -7,6 +7,43 @@ class RatesController < ApplicationController
   # GET /rates or /rates.json
   def index
     @rates = Rate.all
+
+    @fromparam = params[:from_symbol].to_s
+    @toparam = params[:to_symbol].to_s
+    @fromparam = @fromparam.upcase
+    @toparam = @toparam.upcase
+
+    if params[:fromcurrency] && params[:tocurrency] == ""
+        @from_output = "N/A"
+        @to_output = "N/A"
+        @rate_output = "N/A"
+    elsif params[:fromcurrency] && params[:tocurrency]
+        require 'net/http'
+        require 'json'
+        
+        @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
+        @uri = URI(@url)
+        
+        @response = Net::HTTP.get(@uri)
+        @currency = JSON.parse(@response)
+
+        if @currency.empty?
+          @from_output = "N/A (You need to enter a pair to calculate rate"
+          @to_output = "N/A (You need to enter a pair to calculate rate"
+          @rate_output = "N/A (You need to enter a pair to calculate rate"
+        elsif !@currency
+          @from_output = "N/A (You need to enter a pair to calculate rate"
+          @to_output = "N/A (You need to enter a pair to calculate rate"
+          @rate_output = "N/A (You need to enter a pair to calculate rate"
+        else
+          @from_output = @currency["query"]["from"]
+          @to_output = @currency["query"]["to"]
+          @rate_output = @currency["info"]["rate"]
+        end
+
+
+    end
+
   end
 
   # GET /rates/1 or /rates/1.json
