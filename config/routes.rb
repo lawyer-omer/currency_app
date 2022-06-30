@@ -9,7 +9,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   get "home/manage" => "home/manage"
-  get "home/currencyrates" => "home/currencyrates"
   post "home/manage" => "home/manage"
-  post "home/currencyrates" => "home/currencyrates"
 end

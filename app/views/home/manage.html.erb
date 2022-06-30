@@ -2,8 +2,8 @@
 <%= form_tag home_manage_path, data: { turbo: false }, :method => 'POST' do %>
     <div class="card" style="width: 36rem; margin:0 auto;">
         <div class="card-body">  <br>
-            <%= text_field_tag 'fromcurrency', nil, placeholder: "From Currency Symbol", class: "form-control me-2" %> <br>
-            <%= text_field_tag 'tocurrency', nil, placeholder: "To Currency Symbol", class: "form-control me-2" %> <br>
+            <%= select_tag 'fromcurrency', options_for_select([ "USD", "EUR", "TRY", "CAD", "GBP", "JPY", "QAR", "AED",  ], "USD"), class: "form-select" %> <br>
+            <%= select_tag 'tocurrency', options_for_select([ "USD", "EUR", "TRY", "CAD", "GBP", "JPY", "QAR", "AED",  ], "EUR"), class: "form-select" %> <br>
             <%= submit_tag 'Search', class: "btn btn-outline-success"%> <br>
         </div>
     </div>

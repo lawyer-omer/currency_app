@@ -12,13 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :from_symbol, style: "display: block" %>
-    <%= form.text_field :from_symbol %>
+    <%= form.select :from_symbol, (["USD", "EUR", "TRY", "CAD", "GBP", "JPY", "QAR", "AED"])%>
   </div>
 
   <div>
-    <%= form.label :to_symbol, style: "display: block" %>
-    <%= form.text_field :to_symbol %>
+    <%= form.select :to_symbol, (["USD", "EUR", "TRY", "CAD", "GBP", "JPY", "QAR", "AED"])%>
   </div>
 
   <div>

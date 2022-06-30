@@ -8,10 +8,8 @@ class RatesController < ApplicationController
   def index
     @rates = Rate.all
 
-    @fromparam = params[:from_symbol].to_s
-    @toparam = params[:to_symbol].to_s
-    @fromparam = @fromparam.upcase
-    @toparam = @toparam.upcase
+    @fromparam = params[:from_symbol]
+    @toparam = params[:to_symbol]
 
     if params[:fromcurrency] && params[:tocurrency] == ""
         @from_output = "N/A"
@@ -21,7 +19,7 @@ class RatesController < ApplicationController
         require 'net/http'
         require 'json'
         
-        @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
+        @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=aySd4XJBlaFfw1Z31bKPP8aPX0UrO7LY"
         @uri = URI(@url)
         
         @response = Net::HTTP.get(@uri)

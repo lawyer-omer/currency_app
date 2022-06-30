@@ -4,25 +4,25 @@
       <% if rate.user_id == current_user.id%>
       <p>
         <strong>From symbol:</strong>
-        <%= rate.from_symbol.upcase %>
+        <%= rate.from_symbol %>
       </p>
   
       <p>
         <strong>To symbol:</strong>
-        <%= rate.to_symbol.upcase %>
+        <%= rate.to_symbol %>
      </p>
      <p>
       <strong>Rate symbol:</strong>
       <% require 'net/http' %>
       <% require 'json' %>
-      <% @url = "https://api.apilayer.com/fixer/convert?to=#{rate.to_symbol}&from=#{rate.from_symbol}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW" %>
+      <% @url = "https://api.apilayer.com/fixer/convert?to=#{rate.to_symbol}&from=#{rate.from_symbol}&amount=100&apikey=aySd4XJBlaFfw1Z31bKPP8aPX0UrO7LY" %>
       <% @uri = URI(@url) %>
       <% @response = Net::HTTP.get(@uri) %>
       <% @currency = JSON.parse(@response) %>
       <%= @rate_output = @currency["info"]["rate"] %>
      </p>
       <p>
-        <%= button_to "Destroy this pair", rate, method: :delete %>
+        <%= button_to "Destroy this pair", rate, method: :delete, class: "btn btn-outline-danger" %>
       </p>
       <% else %>
       <%= "You need to add some pairs" %>

@@ -1,6 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<p>
+<strong>From symbol:</strong>
+<%= @rate.from_symbol %>
+</p>
 
-<%= render @rate %>
+<p>
+<strong>To symbol:</strong>
+<%= @rate.to_symbol %>
+</p>
 
 <div>
   <%= link_to "Edit this rate", edit_rate_path(@rate) %> |
@@ -8,3 +14,6 @@
 
   <%= button_to "Destroy this rate", @rate, method: :delete %>
 </div>
+
+
+

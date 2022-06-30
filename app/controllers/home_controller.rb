@@ -7,7 +7,7 @@ class HomeController < ApplicationController
         currency_to = "usd"
         currency_from = "eur"
     
-        @url = "https://api.apilayer.com/fixer/convert?to=#{currency_to}&from=#{currency_from}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
+        @url = "https://api.apilayer.com/fixer/convert?to=#{currency_to}&from=#{currency_from}&amount=100&apikey=aySd4XJBlaFfw1Z31bKPP8aPX0UrO7LY"
         @uri = URI(@url)
     
         @response = Net::HTTP.get(@uri)
@@ -33,8 +33,6 @@ class HomeController < ApplicationController
     def manage
         @fromparam = params[:fromcurrency].to_s
         @toparam = params[:tocurrency].to_s
-        @fromparam = @fromparam.upcase
-        @toparam = @toparam.upcase
 
         if params[:fromcurrency] && params[:tocurrency] == ""
             @from_output = "N/A"
@@ -44,7 +42,7 @@ class HomeController < ApplicationController
             require 'net/http'
             require 'json'
             
-            @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=eJ1aTICGpZEzD0ADy3Dxd8JdPX4FLIxW"
+            @url = "https://api.apilayer.com/fixer/convert?to=#{@toparam}&from=#{@fromparam}&amount=100&apikey=aySd4XJBlaFfw1Z31bKPP8aPX0UrO7LY"
             @uri = URI(@url)
             
             @response = Net::HTTP.get(@uri)
@@ -52,16 +50,7 @@ class HomeController < ApplicationController
     
             @from_output = @currency["query"]["from"]
             @to_output = @currency["query"]["to"]
-
-            if  @fromparam == @from_output && @toparam == @to_output
-
-                @from_output = @currency["query"]["from"]
-                @to_output = @currency["query"]["to"]
-                @rate_output = @currency["info"]["rate"]
-                
-            end
-
-
+            @rate_output = @currency["info"]["rate"]
         end
 
     end
