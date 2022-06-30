@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_30_090610) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_30_095713) do
+  create_table "rates", force: :cascade do |t|
+    t.string "from_symbol"
+    t.string "to_symbol"
+    t.string "rate_symbol"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rates_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
