@@ -1,5 +1,8 @@
 # Welcome to the Currency Converter App (Made by Ruby on Rails)
 
+[Live Demo](https://curreny-rates-omer.herokuapp.com/).
+
+
 Firstly, clone this repo:
 ``` $ git clone git@github.com:lawyer-omer/currency_app.git ```
 
